@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Library Management System</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+        }
+        .container {
+            width: 80%;
+            margin: 40px auto;
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        .options {
+            margin-top: 20px;
+        }
+        .option {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .option:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Library Management System</h1>
+        </div>
+        <div class="options">
+            <div class="option">
+                <h2>Available Books</h2>
+                <ul>
+                    <li>Book 1: DBMS</li>
+                    <li>Book 2: CN</li>
+                    <li>Book 3: PYTHON</li>
+                    <li>Book 4: PMS</li>
+                    <li>Book 5: MATHS</li>
+                </ul>
+            </div>
+            <div class="option">
+                <h2>Add New Book</h2>
+                <form>
+                    <label for="book-title">Book Title:</label>
+                    <input type="text" id="book-title" name="book-title"><br><br>
+                    <label for="author">Author:</label>
+                    <input type="text" id="author" name="author"><br><br>
+                    <input type="submit" value="Add Book">
+                </form>
+            </div>
+            <div class="option">
+                <h2>Borrow a Book</h2>
+                <form id="borrow-book-form">
+                    <label for="student-name">Student Name:</label>
+                    <input type="text" id="student-name" name="student-name"><br><br>
+                    <label for="department">Department:</label>
+                    <input type="text" id="department" name="department"><br><br>
+                    <label for="register-number">Register Number:</label>
+                    <input type="text" id="register-number" name="register-number"><br><br>
+                    <label for="book-select">Select a Book:</label>
+                    <select id="book-select" name="book-select">
+                        <option value="">Select a Book</option>
+                        <option value="DBMS">DBMS</option>
+                        <option value="CN">CN</option>
+                        <option value="PYTHON">PYTHON</option>
+                        <option value="PMS">PMS</option>
+                        <option value="MATHS">MATHS</option>
+                    </select><br><br>
+                    <label for="borrow-date">Borrow Date:</label>
+                    <input type="date" id="borrow-date" name="borrow-date"><br><br>
+                    <input type="submit" value="Borrow Book">
+                </form>
+            </div>
+            <div class="option">
+                <h2>Leave the Library</h2>
+                <p>Thank you for visiting the library!</p>
+                <button onclick="window.location.href='secondPage.html'">View More Books</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("borrow-book-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var studentName = document.getElementById("student-name").value;
+            var department = document.getElementById("department").value;
+            var registerNumber = document.getElementById("register-number").value;
+            var bookTitle = document.getElementById("book-select").value;
+            var borrowDate = document.getElementById("borrow-date").value;
+
+            var borrowLog = document.getElementById("borrow-log-list");
+            var borrowLogEntry = document.createElement("li");
+            borrowLogEntry.textContent = `Student ${studentName} from ${department} with register number ${registerNumber} borrowed ${bookTitle} on ${borrowDate}`;
+            borrowLog.appendChild(borrowLogEntry);
+        });
+    </script>
+
+    <div id="borrow-log">
+        <h2>Borrow Log</h2>
+        <ul id="borrow-log-list"></ul>
+    </div>
+</body>
+</html>
