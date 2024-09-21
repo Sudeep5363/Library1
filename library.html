@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Books</title>
+    <!-- Embedded CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        .library-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .book-item {
+            background-color: white;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .book-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .book-item h3 {
+            margin-top: 15px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .book-item p {
+            font-size: 14px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="library-container">
+        <h2>Library Books</h2>
+        <div class="book-grid" id="bookGrid">
+            <!-- Book items will be generated here -->
+        </div>
+    </div>
+
+    <!-- Embedded JavaScript -->
+    <script>
+        const books = [
+            { title: "Book 1", author: "Author A" },
+            { title: "Book 2", author: "Author B" },
+            { title: "Book 3", author: "Author C" },
+            { title: "Book 4", author: "Author D" },
+            { title: "Book 5", author: "Author E" },
+            { title: "Book 6", author: "Author F" },
+            { title: "Book 7", author: "Author G" },
+            { title: "Book 8", author: "Author H" },
+            { title: "Book 9", author: "Author I" },
+            { title: "Book 10", author: "Author J" },
+            { title: "Book 11", author: "Author K" },
+            { title: "Book 12", author: "Author L" },
+            { title: "Book 13", author: "Author M" },
+            { title: "Book 14", author: "Author N" },
+            { title: "Book 15", author: "Author O" },
+            { title: "Book 16", author: "Author P" },
+            { title: "Book 17", author: "Author Q" },
+            { title: "Book 18", author: "Author R" },
+            { title: "Book 19", author: "Author S" },
+            { title: "Book 20", author: "Author T" }
+        ];
+
+        const bookGrid = document.getElementById("bookGrid");
+
+        books.forEach((book, index) => {
+            const bookItem = document.createElement("div");
+            bookItem.classList.add("book-item");
+
+            // Generate a random AI-generated cover image
+            const imageUrl = `https://picsum.photos/200/300?random=${index}`;
+
+            bookItem.innerHTML = `
+                <img src="${imageUrl}" alt="${book.title}">
+                <h3>${book.title}</h3>
+                <p>${book.author}</p>
+            `;
+
+            bookGrid.appendChild(bookItem);
+        });
+    </script>
+</body>
+</html>
