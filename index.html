@@ -97,10 +97,14 @@
             const password = document.getElementById("password").value;
             const message = document.getElementById("message");
 
-            // Sample logic to check username and password
+            // Simple login validation
             if (username === "admin" && password === "12345") {
                 message.style.color = "green";
                 message.textContent = "Login successful!";
+                setTimeout(function() {
+                    // Redirect to the library page
+                    window.location.href = "library.html";
+                }, 1000);
             } else {
                 message.style.color = "red";
                 message.textContent = "Invalid username or password!";
