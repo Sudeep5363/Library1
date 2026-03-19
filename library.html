@@ -3,45 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Library Books</title>
-    <!-- Embedded CSS -->
+    <title>Library — Full Catalog</title>
+
+    <!-- ================================================
+         Styles: Full Library Catalog — library.html
+         ================================================ -->
     <style>
+        /* Reset default browser margins and use border-box sizing */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        /* Base page styles */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            padding: 20px;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            padding: 30px 20px;
+            min-height: 100vh;
         }
 
+        /* Centered page wrapper with a max width */
         .library-container {
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        h2 {
+        /* Page header */
+        .library-header {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
 
+        .library-header h1 {
+            font-size: 2rem;
+            color: #1a3c6e;
+            margin-bottom: 8px;
+        }
+
+        .library-header p {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        /* Navigation bar at the top of the page */
+        .nav-bar {
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 24px;
+        }
+
+        /* Back link in the nav bar */
+        .nav-bar a {
+            text-decoration: none;
+            color: #fff;
+            background-color: #1a3c6e;
+            padding: 10px 22px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background-color 0.2s ease;
+        }
+
+        .nav-bar a:hover {
+            background-color: #122b50;
+        }
+
+        /* Responsive grid for book cards */
         .book-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
+            gap: 24px;
         }
 
+        /* Individual book card */
         .book-item {
-            background-color: white;
-            border-radius: 8px;
-            padding: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             text-align: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
+        /* Lift card on hover for an interactive feel */
+        .book-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Book cover image */
         .book-item img {
             width: 100%;
             height: 250px;
@@ -49,68 +102,122 @@
             border-radius: 8px;
         }
 
+        /* Book title */
         .book-item h3 {
-            margin-top: 15px;
-            font-size: 18px;
-            color: #333;
+            margin-top: 14px;
+            font-size: 1rem;
+            color: #1a3c6e;
+            font-weight: 700;
         }
 
+        /* Author name */
         .book-item p {
-            font-size: 14px;
+            margin-top: 4px;
+            font-size: 0.85rem;
             color: #777;
+        }
+
+        /* Footer */
+        .library-footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.8rem;
+            color: #aaa;
         }
     </style>
 </head>
 <body>
+
     <div class="library-container">
-        <h2>Library Books</h2>
-        <div class="book-grid" id="bookGrid">
-            <!-- Book items will be generated here -->
-        </div>
+
+        <!-- Navigation: back to main catalog -->
+        <nav class="nav-bar">
+            <a href="index.html">&larr; Back to Catalog</a>
+        </nav>
+
+        <!-- Page header -->
+        <header class="library-header">
+            <h1>📚 Full Library Catalog</h1>
+            <p>Explore our complete collection of books across all genres.</p>
+        </header>
+
+        <!-- Book grid — cards are injected dynamically by JavaScript below -->
+        <main>
+            <div class="book-grid" id="bookGrid">
+                <!-- Book cards are rendered here by the script -->
+            </div>
+        </main>
+
+        <!-- Page footer -->
+        <footer class="library-footer">
+            <p>&copy; 2025 Library1. All rights reserved.</p>
+        </footer>
+
     </div>
 
-    <!-- Embedded JavaScript -->
+    <!-- ================================================
+         Script: Render the full book catalog dynamically
+         ================================================ -->
     <script>
+        /**
+         * Full book catalog data.
+         * Each entry contains a title and author name.
+         * Covers are fetched from picsum.photos using the loop index as a seed
+         * so each book consistently displays the same placeholder image.
+         */
         const books = [
-            { title: "Book 1", author: "Author A" },
-            { title: "Book 2", author: "Author B" },
-            { title: "Book 3", author: "Author C" },
-            { title: "Book 4", author: "Author D" },
-            { title: "Book 5", author: "Author E" },
-            { title: "Book 6", author: "Author F" },
-            { title: "Book 7", author: "Author G" },
-            { title: "Book 8", author: "Author H" },
-            { title: "Book 9", author: "Author I" },
-            { title: "Book 10", author: "Author J" },
-            { title: "Book 11", author: "Author K" },
-            { title: "Book 12", author: "Author L" },
-            { title: "Book 13", author: "Author M" },
-            { title: "Book 14", author: "Author N" },
-            { title: "Book 15", author: "Author O" },
-            { title: "Book 16", author: "Author P" },
-            { title: "Book 17", author: "Author Q" },
-            { title: "Book 18", author: "Author R" },
-            { title: "Book 19", author: "Author S" },
-            { title: "Book 20", author: "Author T" }
+            { title: "The Great Gatsby",              author: "F. Scott Fitzgerald"  },
+            { title: "To Kill a Mockingbird",         author: "Harper Lee"           },
+            { title: "1984",                          author: "George Orwell"        },
+            { title: "Pride and Prejudice",           author: "Jane Austen"          },
+            { title: "The Catcher in the Rye",        author: "J.D. Salinger"        },
+            { title: "Brave New World",               author: "Aldous Huxley"        },
+            { title: "The Hobbit",                    author: "J.R.R. Tolkien"       },
+            { title: "Harry Potter and the Sorcerer's Stone", author: "J.K. Rowling" },
+            { title: "The Lord of the Rings",         author: "J.R.R. Tolkien"       },
+            { title: "The Alchemist",                 author: "Paulo Coelho"         },
+            { title: "Animal Farm",                   author: "George Orwell"        },
+            { title: "The Odyssey",                   author: "Homer"                },
+            { title: "Crime and Punishment",          author: "Fyodor Dostoevsky"    },
+            { title: "Moby-Dick",                     author: "Herman Melville"      },
+            { title: "War and Peace",                 author: "Leo Tolstoy"          },
+            { title: "The Divine Comedy",             author: "Dante Alighieri"      },
+            { title: "Don Quixote",                   author: "Miguel de Cervantes"  },
+            { title: "Jane Eyre",                     author: "Charlotte Brontë"     },
+            { title: "Wuthering Heights",             author: "Emily Brontë"         },
+            { title: "Frankenstein",                  author: "Mary Shelley"         }
         ];
 
-        const bookGrid = document.getElementById("bookGrid");
+        /**
+         * Renders all book cards into the #bookGrid container.
+         * Each card displays a placeholder cover image, the book title,
+         * and the author's name.
+         */
+        function renderBooks() {
+            const bookGrid = document.getElementById("bookGrid");
 
-        books.forEach((book, index) => {
-            const bookItem = document.createElement("div");
-            bookItem.classList.add("book-item");
+            books.forEach((book, index) => {
+                // Create the card wrapper element
+                const bookItem = document.createElement("div");
+                bookItem.classList.add("book-item");
 
-            // Generate a random AI-generated cover image
-            const imageUrl = `https://picsum.photos/200/300?random=${index}`;
+                // Use a consistent placeholder image; seed by index for variety
+                const imageUrl = `https://picsum.photos/200/300?random=${index + 1}`;
 
-            bookItem.innerHTML = `
-                <img src="${imageUrl}" alt="${book.title}">
-                <h3>${book.title}</h3>
-                <p>${book.author}</p>
-            `;
+                // Build the card's inner HTML
+                bookItem.innerHTML = `
+                    <img src="${imageUrl}" alt="Cover of ${book.title}">
+                    <h3>${book.title}</h3>
+                    <p>${book.author}</p>
+                `;
 
-            bookGrid.appendChild(bookItem);
-        });
+                bookGrid.appendChild(bookItem);
+            });
+        }
+
+        // Initialise the catalog when the page loads
+        renderBooks();
     </script>
+
 </body>
 </html>
