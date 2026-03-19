@@ -3,129 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Library Books</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            padding: 20px;
-        }
-
-        .library-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .back-link {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .back-link a {
-            text-decoration: none;
-            color: #fff;
-            background-color: #007bff;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-
-        .back-link a:hover {
-            background-color: #0056b3;
-        }
-
-        .book-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .book-item {
-            background-color: white;
-            border-radius: 8px;
-            padding: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        .book-item img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-
-        .book-item h3 {
-            margin-top: 15px;
-            font-size: 18px;
-            color: #333;
-        }
-
-        .book-item p {
-            font-size: 14px;
-            color: #777;
-        }
-
-        .book-item a {
-            text-decoration: none;
-            color: #5cb85c;
-            font-weight: bold;
-        }
-
-        .book-item a:hover {
-            color: #4cae4c;
-        }
-    </style>
+    <meta name="description" content="Library Management System - Browse and manage library books">
+    <title>Library Management System</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <div class="library-container">
-        <div class="back-link">
-            <!-- Link to go back to the Login Page -->
-            <a href="login.html">Back to Login</a>
-        </div>
+    <div class="container">
+        <header>
+            <h1>Library Management System</h1>
+            <p>Explore our collection of books</p>
+            <div class="nav-links">
+                <a href="index.html" class="btn btn-primary">Home</a>
+                <a href="library.html" class="btn btn-primary">Browse Books</a>
+            </div>
+        </header>
 
-        <h2>Library Books</h2>
-        <div class="book-grid" id="bookGrid">
-            <!-- Book items will be generated here -->
-        </div>
+        <main>
+            <h2>Welcome to Our Library</h2>
+            <div class="book-grid" id="bookGrid">
+                <!-- Books will be loaded here -->
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Library Management System. All rights reserved.</p>
+        </footer>
     </div>
 
-    <script>
-        const books = [
-            { title: "Book 1", author: "Author A", detailsPage: "book-details.html" },
-            { title: "Book 2", author: "Author B", detailsPage: "book-details.html" },
-            { title: "Book 3", author: "Author C", detailsPage: "book-details.html" },
-            { title: "Book 4", author: "Author D", detailsPage: "book-details.html" },
-            { title: "Book 5", author: "Author E", detailsPage: "book-details.html" }
-        ];
-
-        const bookGrid = document.getElementById("bookGrid");
-
-        books.forEach((book, index) => {
-            const bookItem = document.createElement("div");
-            bookItem.classList.add("book-item");
-
-            const imageUrl = `https://picsum.photos/200/300?random=${index}`;
-            bookItem.innerHTML = `
-                <img src="${imageUrl}" alt="${book.title}">
-                <h3>${book.title}</h3>
-                <p>${book.author}</p>
-                <a href="${book.detailsPage}">View Details</a>
-            `;
-
-            bookGrid.appendChild(bookItem);
-        });
-    </script>
+    <script src="js/app.js"></script>
 </body>
 </html>
